@@ -1,0 +1,240 @@
+Birthdays
+(0?[1-9]|1[012])[/\.\-](0?[1-9]|[12][0-9]|3[01])[/\.\-](19[0-9]{2}|1[01234]|0?[0-9])
+
+4/25/06
+4/16/14
+2/7/1951
+11/11/1983
+8/30/05
+1/26/1994
+12/3/1967
+8-10-1947
+5/4/10
+4/4/1955
+2/9/01
+8/5/1989
+6/22/00
+6-25-06
+/30/1949
+4/4/1991
+8/24/03
+11/1/1970
+7/6/1974
+6/16/1985
+2/17/16
+5/26/1994
+3/16/1968
+11/26/03
+10/15/04
+4/9/1960
+2/1/20
+2/5/1937
+8/14/1942
+1/20/01
+12/22/02
+6/10/1980
+3-10-1961
+12/17/1963
+10/29/04
+2/15/1965
+2/12/11
+5/6/09
+7/17/1945
+5/20/01
+10/21/
+12/5/1966
+10/18/1971
+6/22/1942
+6/18/03
+6.14.1968
+5/30/1945
+9/27/10
+3.26.1933
+9/22/1991
+
+9/22/1891
+09/22/1991
+1/1/01
+1/1//7
+1/32/1918
+13/8/1997
+
+
+
+
+
+Emails
+
+([0-9A-z_\.]*)@([0-9A-z]*).([0-9A-z]*)
+
+june83@optimum.net
+philliac@aol.com
+lee73120@aol.com
+dpc31351@yahoo.com
+alicearnie@tmobile.com
+@comcast.net
+riccarah@aol.com
+IRCLOVER@worldnet.att.net
+alfranbensam@charter.net
+gramanina@nbc.com
+bevdnewsome@yahoo.com
+bobbugert@aol.com
+joespalace@msn.com
+srburr@comcast.net
+JB285@AOL.com
+wbensel@infoave.net
+mary_biresch@yahoo.com
+moosefan35@yahoo.com
+rlalphonse@sault.com
+kebrooks@snet.net
+kbaker4640@AOL.COM
+GBitsoli@cox.net
+eburket1@cox.net
+donbarnes@abc.info
+myrtle_710@tbs.com
+cadam21@yahoo.com
+Billbasnett@CNN.NET
+GREAT MOMAD@AOL.COM
+jimbauer@castles.com
+asku3@verizon.net
+BOARD617@ATT.NET
+PMACLJA@.com
+FISHONTHESANDIPEARL@prodigy.org
+albs56@aol.com
+Rbattiat@comcast.net
+rbish7@aol.com
+adamsrib@ktis.net
+bbullens@charter.net
+cb06199@gmail.com
+jules_b728@yahoo.com
+bensops5177@comcast.net
+d.bish.67933@aol.com
+Rogbaron@gmail.com
+edsuebecker451@wowway.com
+jc852@aol.com
+vpb67@bex.net
+bill@keithtv.com
+rbin.hood0063@aol.com
+jb710@zoominternet.net
+bireschj@verizon.net
+
+
+
+
+
+Name
+
+(([A-Z]{1}[A-z]* )([A-Z]\. )?([A-Z]{1}[A-z]*))
+
+(NOTICE THAT BLANK IS A NAME)
+
+
+Al Dente
+Anna Mull
+Anna Sthesia
+Barb Ackue
+Barb Dwyer
+Barry Cade
+Barry Wine
+Bob Frapples
+Brock Lee
+Buck Kinnear
+Bud
+Buster Keeton
+Cam R. Uh
+Cliff Hanger
+Cory Ander
+Don Stairs
+Frank N. Stein
+Gail Forcewind
+Graham Cracker
+Greta Life
+Hal Appeno
+Holly Graham
+Ira Membrit
+Jimmy Changa
+Mario Speedwagon
+Maya Didas
+Moe Johnson
+Monty Carlo
+Nick R. Bocker
+Otto Matic
+Paige Turner
+Pat Agonia
+Paul Molive
+Pete Sariya
+Peter Pun
+Petey Cruiser
+Polly Tech
+Poppa Smurf
+Rick O'Shea
+Robin Banks
+Saul Tea
+Shonda Leer
+Sue Vaneer
+Tara Zona
+Terry Aki
+Tom Foolery
+walter melon
+Wilma mumduya
+Zack Lee
+
+
+
+Phone
+
+(\d{3}\.\d{3}\.\d{4}|\d{3}-\d{3}-\d{4}|\(\d{3}\) \d{3}-\d{4})
+
+(908) 704-3366
+(833) 239-6363
+(201) 996-8021
+973.680.3518
+(973) 648-7601
+(609) 292-6800
+(855) 620-5928
+(855) 844-5457
+() 328-6490
+(732) 937-4525
+973-383-4432
+(844) 428-6027
+(855) 87-014
+(855) 909-9276
+(732) 286-6460
+(609) 518-3923
+(844) 330-0443
+(822) 423-7861
+(609) 561-1485
+(899) 656-7977
+(888) 795-6672
+(811) 123-3158
+(899) 113-7403
+(973) 458-6724
+822.558.1345
+(856) 614-3801
+908-859-5467
+(833) 079-4284
+(856) 935-6289
+(732) 937-4525
+(833) 996-3497
+(201) 217-4602
+899.107.2153
+(908) 820-3969
+(609) 441-7581
+(899) 871-5131
+(973) 328-6490
+(822) 734-7117
+(833) 738-0732
+(908) 412-7779
+(609) 729-0873
+(855) 110-2359
+(973) 977-4307
+(856) 853-4177
+(844) 671-1848
+(856) 696-6591
+(899) 004-2527
+(732) 775-5131
+(811) 231-5703
+(833) 871-3292
+
+
+

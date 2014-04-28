@@ -1,0 +1,4 @@
+Jake Walkenhorst,jake@neumont.edu,1111111111
+Jimmy Page,jimmy@neumont.edu,2222222222
+Eric Clapton,eric@neumont.edu,3333333333
+Pete Townshend,pete@neumont.edu,801-555-1212
