@@ -13,9 +13,12 @@ public class ChessView implements java.util.Observer {
     private ActionListener c;
     
     public ChessView() {
-        System.out.println("ChessView()");
+//        System.out.println("ChessView()");
     }
 
+    public void update() {
+        
+    }
     @Override
     public void update(Observable obs, Object obj) {
         // TODO Auto-generated method stub

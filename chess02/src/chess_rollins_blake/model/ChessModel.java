@@ -6,21 +6,29 @@ import chess_rollins_blake.lib.BoardLocation;
 import chess_rollins_blake.lib.ChessMove;
 import chess_rollins_blake.lib.MoveType;
 import chess_rollins_blake.lib.Piece;
-import chess_rollins_blake.lib.PieceStatus;
+import chess_rollins_blake.lib.PieceColor;
 
 public class ChessModel extends java.util.Observable {
 
     public PieceList pieces;
     private Stack<ChessMove> moves;
     private Stack<ChessMove> movesRedo;
+    public String message;
+    public PieceColor currentTurn;
 
     public ChessModel() {
-        System.out.println("ChessModel()");
+//        System.out.println("ChessModel()");
 
         this.pieces = new PieceList();
         this.moves = new Stack<>();
         this.movesRedo = new Stack<>();
+        this.message = "";
+        this.currentTurn = PieceColor.l;
 
+    }
+    
+    private void switchTurn() {
+        this.currentTurn = (this.currentTurn == PieceColor.l) ? PieceColor.d : PieceColor.l;
     }
 
     public boolean addPiece(BoardLocation loc, Piece p) {
@@ -34,6 +42,7 @@ public class ChessModel extends java.util.Observable {
 
     public boolean addMove(ChessMove m) {
         // todo
+        this.message += m.message;
         if (validateMove(m)) {
             // System.out.println("Move valid");
             moves.push(m);
@@ -56,6 +65,8 @@ public class ChessModel extends java.util.Observable {
 
             // System.out.println("Move NOT valid");
         }
+        
+        switchTurn();
         return true;
     }
 
@@ -75,18 +86,45 @@ public class ChessModel extends java.util.Observable {
 
     private boolean validateMove(ChessMove m) {
         boolean isValid = true;
+        
+        switch (m.type) {
+            case ADD:
+                if (isValid && this.pieces.get(m.destLoc) != null) {
+                    isValid = false;
+                    message += "ERROR: The destination already has a piece.\n";
+                }
+                break;
+            case CAPTURE: 
+                if (isValid && this.pieces.get(m.srcLoc) == null) {
+                    isValid = false;
+                    message += "ERROR: The source is empty.\n";
+                }
+                if (isValid && this.pieces.get(m.srcLoc).getColor() != this.currentTurn) {
+                    isValid = false;
+                    message += "ERROR: Wrong player's turn.\n";
+                }
+                if (isValid && this.pieces.get(m.destLoc) == null) {
+                    isValid = false;
+                    message += "ERROR: The destination is empty.\n";
+                }
+                break;
+            case MOVE: 
+                if (isValid && this.pieces.get(m.srcLoc) == null) {
+                    isValid = false;
+                    message += "ERROR: The source is empty.\n";
+                }
+                if (isValid && this.pieces.get(m.srcLoc).getColor() != this.currentTurn) {
+                    isValid = false;
+                    message += "ERROR: Wrong player's turn.\n";
+                }
+                if (isValid && this.pieces.get(m.destLoc) != null) {
+                    isValid = false;
+                    message += "ERROR: The destination is not empty.\n";
+                }
+                break;
+        }
 
-        if (isValid && m.type != MoveType.ADD && this.pieces.get(m.srcLoc) == null) {
-            isValid = false;
-        }
-        if (isValid && m.type == MoveType.MOVE && this.pieces.get(m.destLoc) != null) {
-            isValid = false;
-        }
-        if (isValid && m.type == MoveType.CAPTURE && this.pieces.get(m.destLoc) == null) {
-            isValid = false;
-        }
-
-        if (m.subMove != null && isValid) {
+        if (isValid && m.subMove != null) {
             return validateMove(m.subMove);
         }
         return isValid;

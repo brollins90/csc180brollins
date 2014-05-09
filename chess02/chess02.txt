@@ -30,6 +30,7 @@ pde7
 pdf7
 pdg7
 pdh7
+a2 a3
 a7 a6
 d2 d4
 c7 c5
@@ -44,4 +45,5 @@ b8 c6
 f1 d3
 e8 e7
 g1 h3
+e6 e5
 e1 g1 h1 f1

@@ -14,10 +14,10 @@ import chess_rollins_blake.view.ChessView;
 public class ChessController implements java.awt.event.ActionListener {
 
     private ChessModel model;
-    private ChessView view;
+    protected ChessView view;
 
     public ChessController() {
-        System.out.println("ChessController()");
+//        System.out.println("ChessController()");
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ChessController implements java.awt.event.ActionListener {
             BufferedReader br = null;
             try {
                 String path = filePath;
-                System.out.println(path);
+                //System.out.println(path);
                 br = new BufferedReader(new FileReader(path));
 
                 String line = "";
@@ -49,6 +49,8 @@ public class ChessController implements java.awt.event.ActionListener {
                     ChessMove thisMove = MoveFactory.CreateMove(line);
                     if (thisMove != null) {
                         model.addMove(thisMove);
+                        this.view.update();
+                        this.model.message = "";
                     }
                     //
                     // String[] parts = line.split(",");

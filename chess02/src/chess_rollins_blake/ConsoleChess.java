@@ -27,7 +27,7 @@ public class ConsoleChess {
         
         view.addController(controller);
         
-        view.printBoard();
+        //view.printBoard();
         
     }
 }

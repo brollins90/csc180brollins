@@ -15,10 +15,11 @@ public class ChessMove {
     public Piece capturedPiece;
     public boolean capturedAPiece;
     public MoveType type;
+    public String message;
 
     public ChessMove(String moveString) {
         moveString = moveString.toLowerCase();
-        System.out.println("ChessMove(" + moveString + ")");
+        this.message = moveString + "\n";
         this.capturedAPiece = false;
         this.capturedPiece = null;
         this.moveString = moveString;
@@ -53,13 +54,13 @@ public class ChessMove {
             this.srcLoc = BoardLocation.none;
             this.destLoc = BoardLocation.valueOf("" + moveString.substring(2));
             this.type = MoveType.ADD;
-            System.out.println("Created a new Piece at " + this.destLoc + " color: " + this.piece.getColor() + " type: " + this.piece.getType());
+            this.message += "Created a new Piece at " + this.destLoc + " color: " + this.piece.getColor() + " type: " + this.piece.getType() + ".\n";
         } else if (moveString.length() == 11) {
             this.srcLoc = BoardLocation.valueOf("" + moveString.substring(0, 2));
             this.destLoc = BoardLocation.valueOf("" + moveString.substring(3, 5));
             this.subMove = new ChessMove(moveString.substring(6));
             this.type = MoveType.MOVE;
-            System.out.println("Moved a piece from " + this.srcLoc + " to " + this.destLoc + " and includes the previous move.");
+            this.message += "Moved a piece from " + this.srcLoc + " to " + this.destLoc + " and includes the next move.\n";
         } else /* if (moveString.length() = 5 or 6 */{
             this.srcLoc = BoardLocation.valueOf("" + moveString.substring(0, 2));
             this.destLoc = BoardLocation.valueOf("" + moveString.substring(3, 5));
@@ -69,11 +70,9 @@ public class ChessMove {
                 this.capturedAPiece = true;
                 this.type = MoveType.CAPTURE;
             }
-            System.out.print("Moved a piece from " + this.srcLoc + " to " + this.destLoc);
+            this.message += "Moved a piece from " + this.srcLoc + " to " + this.destLoc + ".\n";
             if (this.capturedAPiece) {
-                System.out.println(" and captured a piece");
-            } else {
-                System.out.println("");
+                this.message += " and captured a piece\n";
             }
         }
     }
