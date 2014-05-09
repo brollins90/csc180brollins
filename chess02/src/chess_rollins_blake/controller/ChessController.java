@@ -35,10 +35,7 @@ public class ChessController implements java.awt.event.ActionListener {
     }
 
     public void loadModelFromFile(String filePath) {
-        
-//        model.addMove(new ChessMove("pda7"));
-        
-        
+                
         if (filePath != null) {
             BufferedReader br = null;
             try {

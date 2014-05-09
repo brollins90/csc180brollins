@@ -1,16 +1,16 @@
 package chess_rollins_blake.lib;
 
-public class Piece {
+public abstract class Piece {
 
     private PieceColor color;
     private PieceStatus status;
-    private PieceType type;
+    protected PieceType type;
     //private BoardLocation loc;
     
-    public Piece(PieceColor color, PieceStatus status, PieceType type/*, BoardLocation startLocation*/) {
+    public Piece(PieceColor color, PieceStatus status/*, PieceType type, BoardLocation startLocation*/) {
         this.color = color;
         this.status = status;
-        this.type = type;
+//        this.type = type;
         //this.loc = startLocation;
     }
     

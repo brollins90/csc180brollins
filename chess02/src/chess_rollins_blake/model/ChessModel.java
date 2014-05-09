@@ -35,23 +35,26 @@ public class ChessModel extends java.util.Observable {
     public boolean addMove(ChessMove m) {
         // todo
         if (validateMove(m)) {
-            System.out.println("Move valid");
+            // System.out.println("Move valid");
             moves.push(m);
             if (m.type == MoveType.ADD) {
-                System.out.println("Adding piece");
+                // System.out.println("Adding piece");
                 pieces.add(m.destLoc, m.piece);
             } else if (m.type == MoveType.CAPTURE) {
-                System.out.println("captured piece");
+                // System.out.println("captured piece");
                 this.pieces.capturePiece(m.destLoc);
                 this.pieces.move(m.srcLoc, m.destLoc);
             } else if (m.type == MoveType.MOVE) {
-                System.out.println("moving piece");
+                // System.out.println("moving piece");
                 this.pieces.move(m.srcLoc, m.destLoc);
+            }
+            if (m.subMove != null) {
+                addMove(m.subMove);
             }
 
         } else {
 
-            System.out.println("Move NOT valid");
+            // System.out.println("Move NOT valid");
         }
         return true;
     }
