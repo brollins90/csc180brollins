@@ -109,6 +109,10 @@ public class PlayerPanel extends JPanel implements Observer {
 
 //        this.addMouseListener(l);
 
+        this.addMouseListener(new BMouseListener());
+        this.addMouseMotionListener(new BMouseListener());
+        this.addMouseWheelListener(new BMouseListener());
+
     }
 
     public void blake1() {
@@ -172,7 +176,94 @@ public class PlayerPanel extends JPanel implements Observer {
         super.addMouseWheelListener(l);
     }
 
+    class BMouseListener implements MouseListener, MouseMotionListener, MouseWheelListener {
 
+
+        public BMouseListener() {
+
+        }
+
+        @Override
+        public void mouseWheelMoved(MouseWheelEvent e) {
+            System.out.println("mouseWheelMoved()");
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            // System.out.println("mouseDragged()");
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            int changed = 0;
+            // System.out.println("mouseMoved()");
+            Point mouse = e.getPoint();
+
+            for (BButton b : buttons) {
+                changed = !(b.hovered == b.contains(mouse)) ? changed + 1 : changed;
+                b.hovered = b.contains(mouse);
+            }
+            // System.out.println(changed);
+            if (changed > 0) {
+                repaint();
+            }
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            // System.out.println("mouseClicked()");
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            // System.out.println("mouseEntered()");
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            // System.out.println("mouseExited()");
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            // System.out.println("mousePressed()");
+            Point mouse = e.getPoint();
+            
+            ActionEvent buttonPress = null;
+
+            if (prev.contains(mouse)) {
+                buttonPress = new ActionEvent(this, PlayerAction.PREVIOUS.ordinal(), "");
+            }
+
+            if (player.isPlaying()) {
+                if (stop.contains(mouse)) {
+                    buttonPress = new ActionEvent(this, PlayerAction.STOP.ordinal(), "");
+                }
+            } else {
+                if (play.contains(mouse)) {
+                    buttonPress = new ActionEvent(this, PlayerAction.PLAY.ordinal(), "");
+                }
+            }
+
+            if (next.contains(mouse)) {
+                buttonPress = new ActionEvent(this, PlayerAction.NEXT.ordinal(), "");
+            }
+
+            if (open.contains(mouse)) {
+                buttonPress = new ActionEvent(this, PlayerAction.OPEN.ordinal(), "");
+            }
+
+            if (buttonPress != null) {
+                playerListener.actionPerformed(buttonPress);
+            }
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+     //       System.out.println("mouseReleased()");
+        }
+
+    }
 
 
 
