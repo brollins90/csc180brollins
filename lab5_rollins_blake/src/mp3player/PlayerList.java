@@ -7,17 +7,19 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JList;
 
 //import mp3player.PlayerPanel.BMouseListener;
 
-public class PlayerList<E> extends JList<E> {
+public class PlayerList<E> extends JList<E> implements Observer {
 
     private static final long serialVersionUID = 1L;
     private ActionListener playerListener;
 
-    public PlayerList(ActionListener l, BPlayer inPlayer) {
+    public PlayerList(ActionListener l, BMouseListener mList) {
         this.playerListener = l;
 
         this.addMouseListener(new PlayerListMouseListener());
@@ -29,17 +31,18 @@ public class PlayerList<E> extends JList<E> {
 
         @Override
         public void mouseWheelMoved(MouseWheelEvent e) {
-             System.out.println("mouseWheelMoved()");
+//             System.out.println("mouseWheelMoved()");
         }
 
         @Override
         public void mouseDragged(MouseEvent e) {
-             System.out.println("mouseDragged()");
+//             System.out.println("mouseDragged()");
         }
 
         @Override
         public void mouseMoved(MouseEvent e) {
-             System.out.println("mouseMoved()");
+//             System.out.println("mouseMoved()");
+             //repaint();
         }
 
         @Override
@@ -61,6 +64,7 @@ public class PlayerList<E> extends JList<E> {
 
             if (songIndex >= 0) {
                 playerListener.actionPerformed(new ActionEvent(this, 5, String.valueOf(songIndex)));
+                repaint();
             }
         }
 
@@ -84,6 +88,12 @@ public class PlayerList<E> extends JList<E> {
             // System.out.println("mouseReleased()");
         }
 
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        // TODO Auto-generated method stub
+        repaint();
     }
 
 }

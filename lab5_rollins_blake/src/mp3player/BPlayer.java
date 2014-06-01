@@ -2,8 +2,14 @@ package mp3player;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Observable;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.Line;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.Port.Info;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -11,11 +17,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class BPlayer extends Observable {
 
     // Player play;
-    private int songIndex;
+    public int songIndex;
     private BPlay currentSong;
     private Thread currentSongThread;
     private boolean currentlyPlaying;
-    public PlayerListModel<String> listModel = new PlayerListModel<String>();
+    public PlayerListModel<File> listModel = new PlayerListModel<File>();
     private JFileChooser chooser;
     private PlayerGUI gui;
 
@@ -41,13 +47,13 @@ public class BPlayer extends Observable {
 
     }
 
-    private void addSong(String filename) {
-        listModel.add(filename);
+    private void addSong(File file) {
+        listModel.add(file);
         songIndex = listModel.getSize() - 1;
         startSong();
     }
 
-    public PlayerListModel<String> getListModel() {
+    public PlayerListModel<File> getListModel() {
         return this.listModel;
     }
 
@@ -75,6 +81,7 @@ public class BPlayer extends Observable {
         stopSong();
 
         try {
+            
             currentSong = new BPlay(filename);
             currentSongThread = new Thread(currentSong);
             currentSongThread.start();
@@ -88,14 +95,15 @@ public class BPlayer extends Observable {
 
     private void startSong() {
         if (songIndex >= 0 && listModel.getSize() > 0) {
-            setupNewSongThread(listModel.getElementAt(songIndex));
+            setupNewSongThread(listModel.getElementAt(songIndex).getAbsolutePath());
+            
         }
     }
 
     private void startSongAtIndex(int index) {
         if (index >= 0 && index < listModel.getSize()) {
             songIndex = index;
-            setupNewSongThread(listModel.getElementAt(songIndex));
+            setupNewSongThread(listModel.getElementAt(songIndex).getAbsolutePath());
         }
     }
 
@@ -127,7 +135,7 @@ public class BPlayer extends Observable {
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
                     String newFileName = chooser.getSelectedFile().getAbsolutePath();
                     // System.out.println("You chose: " + newFileName);
-                    addSong(newFileName);
+                    addSong(new File(newFileName));
                 }
             } else if (current == PlayerAction.PAUSE) {
                 //
@@ -139,12 +147,46 @@ public class BPlayer extends Observable {
                 startSongAtIndex(Integer.parseInt(arg0.getActionCommand()));
             } else if (current == PlayerAction.STOP) {
                 stopSong();
+            } else if (current == PlayerAction.SETVOLUME) {
+                setVolume(Float.parseFloat(arg0.getActionCommand()));
             }
             setChanged();
             notifyObservers(arg0);
 
         }
 
+        private void setVolume(float volume) {
+            Info source = Info.SPEAKER;
+
+            if (AudioSystem.isLineSupported(source)) {
+                try {
+                    Line speaker = AudioSystem.getLine(source);
+                    speaker.open();
+                    FloatControl volumeControl = (FloatControl) speaker.getControl(FloatControl.Type.VOLUME);
+                    volumeControl.setValue(volume);
+                    speaker.close();
+                } catch (LineUnavailableException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+    public static void setLineGain(float volume) {
+        Info source = Info.SPEAKER;
+
+        if (AudioSystem.isLineSupported(source)) {
+            try {
+                Line speaker = AudioSystem.getLine(source);
+                speaker.open();
+                FloatControl volumeControl = (FloatControl) speaker.getControl(FloatControl.Type.VOLUME);
+                volumeControl.setValue(volume);
+                speaker.close();
+            } catch (LineUnavailableException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
 
