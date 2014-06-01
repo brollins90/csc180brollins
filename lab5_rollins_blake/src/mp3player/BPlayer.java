@@ -30,6 +30,7 @@ public class BPlayer extends Observable {
         this.songIndex = 0;
         gui = new PlayerGUI(new BListener(), this);
         this.addObserver(gui.panel);
+        this.addObserver(gui.list);
 
         this.currentlyPlaying = false;
 
@@ -82,7 +83,7 @@ public class BPlayer extends Observable {
 
         try {
             
-            currentSong = new BPlay(filename);
+            currentSong = new BPlay(filename, new BListener());
             currentSongThread = new Thread(currentSong);
             currentSongThread.start();
             currentlyPlaying = true;
@@ -140,13 +141,15 @@ public class BPlayer extends Observable {
             } else if (current == PlayerAction.PAUSE) {
                 //
             } else if (current == PlayerAction.PLAY) {
+                if (!currentlyPlaying) {
                 startSong();
+                }
             } else if (current == PlayerAction.PREVIOUS) {
                 previousSong();
             } else if (current == PlayerAction.SETINDEX) {
                 startSongAtIndex(Integer.parseInt(arg0.getActionCommand()));
             } else if (current == PlayerAction.STOP) {
-                stopSong();
+                if (currentlyPlaying) {stopSong();}
             } else if (current == PlayerAction.SETVOLUME) {
                 setVolume(Float.parseFloat(arg0.getActionCommand()));
             }
@@ -171,22 +174,6 @@ public class BPlayer extends Observable {
             }
         }
 
-    }
-
-    public static void setLineGain(float volume) {
-        Info source = Info.SPEAKER;
-
-        if (AudioSystem.isLineSupported(source)) {
-            try {
-                Line speaker = AudioSystem.getLine(source);
-                speaker.open();
-                FloatControl volumeControl = (FloatControl) speaker.getControl(FloatControl.Type.VOLUME);
-                volumeControl.setValue(volume);
-                speaker.close();
-            } catch (LineUnavailableException ex) {
-                ex.printStackTrace();
-            }
-        }
     }
 
 

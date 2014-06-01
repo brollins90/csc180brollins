@@ -15,6 +15,7 @@ public class PlayerGUI {
     private BPlayer player;
     private JFrame frame;
     private BMouseListener mList;
+    PlayerList<File>  list;
 
     public PlayerGUI(ActionListener l, BPlayer inPlayer) {
         this.playerListener = l;
@@ -27,7 +28,7 @@ public class PlayerGUI {
         
         panel = new PlayerPanel(this.playerListener, this.player, this.mList);
 
-        PlayerList<File> list = new PlayerList<File>(this.playerListener, this.mList);
+        list = new PlayerList<File>(this.playerListener, this.mList);
         list.setModel(this.player.listModel);
         PlayerListCellRenderer rend = new PlayerListCellRenderer(this.player);
         list.setCellRenderer(rend);

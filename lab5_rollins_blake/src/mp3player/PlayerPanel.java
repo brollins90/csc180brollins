@@ -67,7 +67,7 @@ public class PlayerPanel extends JPanel implements Observer {
         buttons.add(play);
 
 
-        stop = new BButton(this.mList, new Point(80, 10), 80, 80, PlayerAction.STOP);
+        stop = new BButton(this.mList, new Point(160, 10), 80, 80, PlayerAction.STOP);
         mList.addObserver(stop);
         BPoly stop1 = new BPoly();
         stop1.addPoint(new Point(20, 20));
@@ -79,7 +79,7 @@ public class PlayerPanel extends JPanel implements Observer {
         buttons.add(stop);
 
 
-        next = new BButton(this.mList, new Point(160, 10), 80, 80, PlayerAction.NEXT);
+        next = new BButton(this.mList, new Point(240, 10), 80, 80, PlayerAction.NEXT);
         mList.addObserver(next);
         BPoly next1 = new BPoly();
         next1.addPoint(new Point(15, 20));
@@ -101,7 +101,7 @@ public class PlayerPanel extends JPanel implements Observer {
         buttons.add(next);
 
 
-        open = new BButton(this.mList, new Point(240, 10), 80, 80, PlayerAction.OPEN);
+        open = new BButton(this.mList, new Point(320, 10), 80, 80, PlayerAction.OPEN);
         mList.addObserver(open);
         BPoly open1 = new BPoly();
         open1.addPoint(new Point(20, 25));
@@ -152,9 +152,10 @@ public class PlayerPanel extends JPanel implements Observer {
         prev.paintComponent(g);
 
         // Play / Stop
-        BButton playStop = (this.player.isPlaying()) ? stop : play;
-        playStop.paintComponent(g);
-
+//        BButton playStop = (this.player.isPlaying()) ? stop : play;
+//        playStop.paintComponent(g);
+        stop.paintComponent(g);
+        play.paintComponent(g);
         // Next
         next.paintComponent(g);
 
