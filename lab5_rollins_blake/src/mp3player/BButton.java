@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * A button object for use in the MP3 player
+ * @author Blake Rollins
+ *
+ */
 public class BButton implements Observer {
 
     public boolean hovered;
@@ -28,6 +33,7 @@ public class BButton implements Observer {
     ActionListener playerListener;
     PlayerAction buttonAction;
 
+    
     public BButton(BMouseListener mList, Point location, int w, int h, PlayerAction action) {
         this.mList = mList;
         this.buttonAction = action;

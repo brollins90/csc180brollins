@@ -82,7 +82,7 @@ public class BPlayer extends Observable {
         stopSong();
 
         try {
-            
+
             currentSong = new BPlay(filename, new BListener());
             currentSongThread = new Thread(currentSong);
             currentSongThread.start();
