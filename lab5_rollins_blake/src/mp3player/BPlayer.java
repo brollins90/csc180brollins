@@ -20,7 +20,7 @@ public class BPlayer extends Observable {
     public int songIndex;
     private BPlay currentSong;
     private Thread currentSongThread;
-    private boolean currentlyPlaying;
+    boolean currentlyPlaying;
     public PlayerListModel<File> listModel = new PlayerListModel<File>();
     private JFileChooser chooser;
     private PlayerGUI gui;
@@ -122,8 +122,8 @@ public class BPlayer extends Observable {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            System.out.println("actionPerformed()");
-            System.out.println(arg0.getActionCommand());
+//            System.out.println("actionPerformed()");
+//            System.out.println(arg0.getActionCommand());
 
             PlayerAction current = PlayerAction.values()[arg0.getID()];
             // switch (arg0.getID()) {

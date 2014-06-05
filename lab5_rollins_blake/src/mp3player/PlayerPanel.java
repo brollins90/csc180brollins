@@ -142,8 +142,8 @@ public class PlayerPanel extends JPanel implements Observer {
     @Override
     public void paintComponent(Graphics g) {
 
-        System.out.println("Painting panel");
-        System.out.println("isPlaying: " + this.player.isPlaying());
+//        System.out.println("Painting panel");
+//        System.out.println("isPlaying: " + this.player.isPlaying());
 
         g.setColor(BACKGROUND_COLOR);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -168,131 +168,22 @@ public class PlayerPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable arg0, Object arg1) {
-
-        System.out.println("panel update has been called upon.");
-
-        if (arg1 instanceof String && arg1.equals("play")) {
-            // isPlaying = true;
-        }
-
-        if (arg1 instanceof String && arg1.equals("stop")) {
-            // isPlaying = false;
-        }
         repaint();
     }
 
     @Override
     public synchronized void addMouseListener(MouseListener l) {
-        // TODO Auto-generated method stub
         super.addMouseListener(l);
     }
 
     @Override
     public synchronized void addMouseMotionListener(MouseMotionListener l) {
-        // TODO Auto-generated method stub
         super.addMouseMotionListener(l);
     }
 
     @Override
     public synchronized void addMouseWheelListener(MouseWheelListener l) {
-        // TODO Auto-generated method stub
         super.addMouseWheelListener(l);
     }
-
-    // class BMouseListener implements MouseListener, MouseMotionListener, MouseWheelListener {
-    //
-    //
-    // public BMouseListener() {
-    //
-    // }
-    //
-    // @Override
-    // public void mouseWheelMoved(MouseWheelEvent e) {
-    // System.out.println("mouseWheelMoved()");
-    // }
-    //
-    // @Override
-    // public void mouseDragged(MouseEvent e) {
-    // // System.out.println("mouseDragged()");
-    // }
-    //
-    // @Override
-    // public void mouseMoved(MouseEvent e) {
-    // int changed = 0;
-    // // System.out.println("mouseMoved()");
-    // Point mouse = e.getPoint();
-    //
-    // for (BButton b : buttons) {
-    // changed = !(b.hovered == b.contains(mouse)) ? changed + 1 : changed;
-    // b.hovered = b.contains(mouse);
-    // }
-    // // System.out.println(changed);
-    // if (changed > 0) {
-    // repaint();
-    // }
-    // }
-    //
-    // @Override
-    // public void mouseClicked(MouseEvent e) {
-    // // System.out.println("mouseClicked()");
-    // }
-    //
-    // @Override
-    // public void mouseEntered(MouseEvent e) {
-    // // System.out.println("mouseEntered()");
-    // }
-    //
-    // @Override
-    // public void mouseExited(MouseEvent e) {
-    // // System.out.println("mouseExited()");
-    // }
-    //
-    // @Override
-    // public void mousePressed(MouseEvent e) {
-    // // System.out.println("mousePressed()");
-    // Point mouse = e.getPoint();
-    //
-    // ActionEvent buttonPress = null;
-    //
-    // if (prev.contains(mouse)) {
-    // buttonPress = new ActionEvent(this, PlayerAction.PREVIOUS.ordinal(), "");
-    // }
-    //
-    // if (player.isPlaying()) {
-    // if (stop.contains(mouse)) {
-    // buttonPress = new ActionEvent(this, PlayerAction.STOP.ordinal(), "");
-    // }
-    // } else {
-    // if (play.contains(mouse)) {
-    // buttonPress = new ActionEvent(this, PlayerAction.PLAY.ordinal(), "");
-    // }
-    // }
-    //
-    // if (next.contains(mouse)) {
-    // buttonPress = new ActionEvent(this, PlayerAction.NEXT.ordinal(), "");
-    // }
-    //
-    // if (open.contains(mouse)) {
-    // buttonPress = new ActionEvent(this, PlayerAction.OPEN.ordinal(), "");
-    // }
-    //
-    // if (volume.contains(mouse)) {
-    // BButtonRect v = (BButtonRect)volume;
-    // buttonPress = new ActionEvent(this, PlayerAction.SETVOLUME.ordinal(), String.valueOf(v.getPercentFromMouse(mouse)));
-    // }
-    //
-    // if (buttonPress != null) {
-    // playerListener.actionPerformed(buttonPress);
-    // }
-    // }
-    //
-    // @Override
-    // public void mouseReleased(MouseEvent e) {
-    // // System.out.println("mouseReleased()");
-    // }
-    //
-    // }
-
-
 
 }

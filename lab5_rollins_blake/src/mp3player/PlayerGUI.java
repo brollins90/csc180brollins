@@ -28,7 +28,7 @@ public class PlayerGUI {
         
         panel = new PlayerPanel(this.playerListener, this.player, this.mList);
 
-        list = new PlayerList<File>(this.playerListener, this.mList);
+        list = new PlayerList<File>(this.playerListener, this.player);
         list.setModel(this.player.listModel);
         PlayerListCellRenderer rend = new PlayerListCellRenderer(this.player);
         list.setCellRenderer(rend);
