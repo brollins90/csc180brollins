@@ -1,0 +1,22 @@
+Blake Rollins
+
+1) All words that begin with the letter 's' (case insensitive).
+(\b[sS]\w*)
+
+2) All 4-digit numbers.
+([0-9]{4})
+
+3) All phrases that appear inside parentheses.
+\((.*?)\)
+
+4) All words that have the character sequences "th" or "st" in them (case insensitive).
+(\w*((th)|(st))\w*)
+(\w*th\w*)|(\w*st\w*)
+(\w*((TH)|(Th)|(tH)|(th)|(ST)|(St)|(sT)|(st))\w*)
+
+5) All words that begin with a capital letter and are at least 5 characters in length.
+([A-Z]\w{4,})
+
+
+
+In theoretical computer science and formal language theory, a regular expression (abbreviated regex or regexp) is a sequence of characters that forms a search pattern, mainly for use in pattern matching with strings, or string matching, i.e. "find and replace"-like operations. The concept arose in the 1950s, when the American mathematician Stephen Kleene formalized the description of a regular language, and came into common use with the Unix text processing utilities ed, an editor, and grep (global regular expression print), a filter.
