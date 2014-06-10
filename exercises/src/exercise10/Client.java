@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Client
 {
     private Scanner scan;
-    public final static String ADDRESS = "192.168.173.1";
+    public final static String ADDRESS = "10.10.19.30";
     public final static int PORT = 12345;
     
     public Client() {

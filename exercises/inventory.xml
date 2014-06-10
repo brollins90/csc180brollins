@@ -1,0 +1,10 @@
+<storage>
+  <food type="Apple" expired="false">
+    <condition>New</condition>
+    <price>0.67</price>
+  </food>
+  <food type="Bread" expired="true">
+    <condition>Stale</condition>
+    <price>1.25</price>
+  </food>
+</storage>
